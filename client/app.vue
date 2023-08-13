@@ -7,15 +7,25 @@
                 </div>
                 <div class="flex justify-between align-middle">
                     <div v-if="auth.loggedIn">
-                        Profile
+                        <dropdown :label="auth.user.name">
+                            <dropdown-item @click="logout">
+                                <fa-icon :icon="['fas', 'right-from-bracket']"/>
+                                {{$t('Logout')}}
+                            </dropdown-item>
+                        </dropdown>
                     </div>
                     <div v-else>
-                        <NuxtLink to="/auth/login" class="mr-2">{{ $t('Login') }}</NuxtLink>
-                        <NuxtLink to="/auth/register">{{ $t('Register') }}</NuxtLink>
+                        <NuxtLink to="/auth/login" class="mr-2">{{$t('Login')}}</NuxtLink>
+                        <NuxtLink to="/auth/register">{{$t('Register')}}</NuxtLink>
                     </div>
-                    <button type="button" v-for="locale in availableLocales" :key="locale.code" @click="setLocale(locale.code)" class="ml-2">
-                        {{ locale.name }}
-                    </button>
+                    <dropdown :label="$t('Lang')" class="ml-2">
+                        <dropdown-item v-for="availableLocale in availableLocales"
+                                       :key="availableLocale.code"
+                                       @click="setLocale(availableLocale.code)">
+                            {{availableLocale.name}}
+                        </dropdown-item>
+                    </dropdown>
+
                 </div>
             </div>
         </nav>
@@ -25,22 +35,16 @@
     </div>
 </template>
 
-<script>
-export default {
-    setup() {
-        const auth = useAuth()
+<script setup>
+const auth = useAuth()
 
-        const { locale, locales, setLocale } = useI18n()
+const {locale, locales, setLocale} = useI18n()
 
-        const availableLocales = computed(() => {
-            return (locales.value).filter((i) => i.code !== locale.value)
-        })
+const availableLocales = computed(() => {
+    return (locales.value).filter((i) => i.code !== locale.value)
+})
 
-        return {
-            auth,
-            setLocale,
-            availableLocales
-        }
-    }
+const logout = () => {
+    auth.logout()
 }
 </script>

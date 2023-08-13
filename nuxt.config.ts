@@ -2,7 +2,13 @@ export default defineNuxtConfig({
     css: [
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
-    devtools: {enabled: true},
+    devtools: {
+      enabled: true,
+
+      timeline: {
+        enabled: true
+      }
+    },
     srcDir: 'client/',
     plugins: [
         '~/plugins/fontawesome.js'
@@ -23,7 +29,6 @@ export default defineNuxtConfig({
                 strategy: 'no_prefix',
                 defaultLocale: 'pl',
                 legacy: false,
-                locale: 'en',
                 langDir: './locales',
                 lazy: true,
                 locales: [
@@ -40,16 +45,36 @@ export default defineNuxtConfig({
                 ]
             }
         ],
-        'nuxt-lodash'
+        'nuxt-lodash',
+        [
+            '@vee-validate/nuxt',
+            {
+                autoImports: true,
+                componentNames: {
+                    Form: 'VForm',
+                    Field: 'VField',
+                    FieldArray: 'VFieldArray',
+                    ErrorMessage: 'VErrorMessage',
+                },
+            }
+        ]
     ],
     auth: {
-        middleware: 'auth',
+        globalMiddleware: true,
+        redirect: {
+            home: '/',
+            login: '/auth/login',
+            logout: '/'
+        },
         strategies: {
             laravelSanctum: {
                 provider: 'laravel/sanctum',
                 url: process.env.APP_URL
             },
         }
+    },
+    router: {
+        middleware: ['auth']
     },
     components: [
         {

@@ -1,7 +1,7 @@
 module.exports = {
     'env': {
         'browser': true,
-        'es2021': true,
+        'es2021': true
     },
     'extends': [
         'google',
@@ -30,7 +30,7 @@ module.exports = {
     'rules': {
         'semi': ['error', 'never'],
         'object-curly-spacing': ['error', 'always'],
-        'indent': ['error', 4],
+        'indent': ['error', 4, { 'SwitchCase': 1 }],
         'max-len': ['error', {
             'code': 240
         }],

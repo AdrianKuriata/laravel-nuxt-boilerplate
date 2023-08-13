@@ -1,4 +1,7 @@
 {
     "Login": "Zaloguj",
-    "Register": "Zarejestruj"
+    "Register": "Zarejestruj",
+    "Password": "Hasło",
+    "Insert login": "Wprowadź login",
+    "Insert password": "Wprowadź hasło"
 }
