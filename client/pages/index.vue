@@ -1,8 +1,5 @@
 <template>
-    Main Page
+    Index
 </template>
 <script setup>
-definePageMeta({
-    auth: 'guest'
-})
 </script>

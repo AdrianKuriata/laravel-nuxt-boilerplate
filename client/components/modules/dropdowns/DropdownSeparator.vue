@@ -1,3 +1,3 @@
 <template>
-    <hr />
+    <hr class="py-2" />
 </template>

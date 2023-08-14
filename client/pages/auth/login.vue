@@ -1,8 +1,8 @@
 <template>
     <card :title="$t('Login')" :footer="false" size="md">
         <v-form v-slot="{ handleSubmit, isSubmitting }">
-            <field-wrapper :label="$t('Login')" name="email" v-slot="{ invalid }">
-                <field-input v-model="form.email" :placeholder="$t('Insert login')" :state="invalid" />
+            <field-wrapper :label="$t('E-mail address')" name="email" v-slot="{ invalid }">
+                <field-input v-model="form.email" :placeholder="$t('Insert e-mail address')" :state="invalid" />
             </field-wrapper>
 
             <field-wrapper :label="$t('Password')" name="password" v-slot="{ invalid }">
@@ -19,7 +19,7 @@
 </template>
 <script setup>
 definePageMeta({
-    auth: 'guest'
+    middleware: ['guest']
 })
 const auth = useAuth()
 const form = reactive({
@@ -34,7 +34,7 @@ const login = (values, actions) => {
             password: form.password,
             remember: form.remember
         }
-    }).catch((error) => {
+    }).then(() => navigateTo('/')).catch((error) => {
         actions.setErrors(error.response._data.errors)
     })
 }

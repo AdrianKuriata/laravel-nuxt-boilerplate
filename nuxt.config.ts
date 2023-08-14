@@ -3,15 +3,15 @@ export default defineNuxtConfig({
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
     devtools: {
-      enabled: true,
+        enabled: true,
 
-      timeline: {
-        enabled: true
-      }
+        timeline: {
+            enabled: true
+        }
     },
     srcDir: 'client/',
     plugins: [
-        '~/plugins/fontawesome.js'
+        '@/plugins/fontawesome.js'
     ],
     modules: [
         [
@@ -60,7 +60,6 @@ export default defineNuxtConfig({
         ]
     ],
     auth: {
-        globalMiddleware: true,
         redirect: {
             home: '/',
             login: '/auth/login',
@@ -73,17 +72,20 @@ export default defineNuxtConfig({
             },
         }
     },
-    router: {
-        middleware: ['auth']
-    },
     components: [
         {
-            path: '~/components',
+            path: '@/components',
             pathPrefix: false
         }
     ],
     lodash: {
         prefix: '_',
         upperAfterPrefix: false
+    },
+    runtimeConfig: {
+        public: {
+            backendUrl: process.env.APP_URL,
+            frontendUrl: process.env.FRONTEND_URL,
+        }
     }
 })

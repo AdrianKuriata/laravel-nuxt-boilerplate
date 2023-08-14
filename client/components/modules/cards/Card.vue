@@ -4,12 +4,12 @@
             <slot name="header">{{title}}</slot>
         </div>
 
-        <div class="p-3">
-            <slot/>
+        <div :class="{ [bodyClass]: true }">
+            <slot />
         </div>
 
         <div v-if="footer" class="border-t border-neutral p-3">
-            <slot name="footer"/>
+            <slot name="footer" />
         </div>
     </div>
 </template>
@@ -34,6 +34,10 @@ const props = defineProps({
     footer: {
         type: Boolean,
         default: () => true
+    },
+    bodyClass: {
+        type: String,
+        default: () => 'p-3'
     }
 })
 const getSize = computed(() => {

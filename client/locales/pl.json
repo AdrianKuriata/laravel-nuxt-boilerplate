@@ -3,5 +3,8 @@
     "Register": "Zarejestruj",
     "Password": "Hasło",
     "Insert login": "Wprowadź login",
-    "Insert password": "Wprowadź hasło"
+    "Insert password": "Wprowadź hasło",
+    "Lang": "Język",
+    "Remember me": "Zapamiętaj mnie",
+    "Logout": "Wyloguj"
 }

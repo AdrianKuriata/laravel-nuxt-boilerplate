@@ -8,17 +8,17 @@
                 <div class="flex justify-between align-middle">
                     <div v-if="auth.loggedIn">
                         <dropdown :label="auth.user.name">
-                            <dropdown-item @click="logout">
+                            <dropdown-item class="hover:text-primary" @click="logout">
                                 <fa-icon :icon="['fas', 'right-from-bracket']"/>
                                 {{$t('Logout')}}
                             </dropdown-item>
                         </dropdown>
                     </div>
                     <div v-else>
-                        <NuxtLink to="/auth/login" class="mr-2">{{$t('Login')}}</NuxtLink>
-                        <NuxtLink to="/auth/register">{{$t('Register')}}</NuxtLink>
+                        <NuxtLink to="/auth/login" class="mr-2 hover:text-primary">{{$t('Login')}}</NuxtLink>
+                        <NuxtLink to="/auth/register" class="hover:text-primary">{{$t('Register')}}</NuxtLink>
                     </div>
-                    <dropdown :label="$t('Lang')" class="ml-2">
+                    <dropdown :label="$t('Lang')" class="ml-2 hover:text-primary">
                         <dropdown-item v-for="availableLocale in availableLocales"
                                        :key="availableLocale.code"
                                        @click="setLocale(availableLocale.code)">
@@ -38,7 +38,7 @@
 <script setup>
 const auth = useAuth()
 
-const {locale, locales, setLocale} = useI18n()
+const { locale, locales, setLocale } = useI18n()
 
 const availableLocales = computed(() => {
     return (locales.value).filter((i) => i.code !== locale.value)

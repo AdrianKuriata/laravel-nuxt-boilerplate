@@ -13,6 +13,9 @@
     </div>
 </template>
 <script setup>
+
+import strRandom from '@/utils/helpers'
+
 const props = defineProps({
     modelValue: {
         type: Boolean,
@@ -37,5 +40,5 @@ const props = defineProps({
 })
 defineEmits(['update:modelValue'])
 
-const randomId = computed(() => props.id !== null? props.id : Math.random().toString(36).slice(2))
+const randomId = computed(() => props.id !== null? props.id : strRandom())
 </script>
