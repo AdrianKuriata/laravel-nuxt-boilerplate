@@ -1,7 +1,14 @@
 <template>
     <button :type="type"
+            :class="{
+                [getVariant]: !disabled,
+                [getDisabledVariant]: disabled,
+                [getSize]: true,
+                [getRounded]: true,
+                'cursor-not-allowed': disabled
+            }"
             class="border transition-all"
-            :class="{ [getVariant]: true, [getSize]: true, 'rounded': rounded }"
+            :disabled="disabled"
     >
         <slot v-if="!loader" />
         <fa-icon v-else :icon="['fa', 'fa-circle-notch']" spin />
@@ -15,15 +22,15 @@ const props = defineProps({
     },
     variant: {
         type: String,
-        default: () => 'default'
+        default: () => 'primary'
     },
     size: {
         type: String,
         default: () => 'md'
     },
-    rounded: {
+    pill: {
         type: Boolean,
-        default: () => true
+        default: () => false
     },
     loader: {
         type: Boolean,
@@ -37,7 +44,7 @@ const props = defineProps({
 const getVariant = computed(() => {
     switch (props.variant) {
         case 'primary':
-            return 'border-primary-dark bg-primary hover:bg-primary-dark text-white'
+            return 'border-primary-dark bg-primary hover:bg-primary-dark text-white cur'
         case 'secondary':
             return 'border-secondary-dark bg-secondary hover:bg-secondary-dark text-white'
         case 'success':
@@ -49,6 +56,31 @@ const getVariant = computed(() => {
         case 'default':
             return 'border-neutral-dark bg-neutral hover:bg-neutral-dark text-white'
     }
+})
+
+const getDisabledVariant = computed(() => {
+    switch (props.variant) {
+        case 'primary':
+            return 'border-primary-dark bg-primary-dark text-neutral-dark'
+        case 'secondary':
+            return 'border-secondary-dark bg-secondary-dark text-neutral-dark'
+        case 'success':
+            return 'border-success-dark bg-success-dark text-neutral-dark'
+        case 'error':
+            return 'border-error-dark bg-error-dark text-neutral-dark'
+        case 'warning':
+            return 'border-warning-dark bg-warning-dark text-neutral-dark'
+        case 'default':
+            return 'border-neutral-dark bg-neutral-dark text-secondary-dark'
+    }
+})
+
+const getRounded = computed(() => {
+    if (props.pill) {
+        return 'rounded-full'
+    }
+
+    return 'rounded'
 })
 
 const getSize = computed(() => {

@@ -2,8 +2,8 @@
     <input
         :value="modelValue"
         type="password"
-        class="border shadow rounded w-full p-2 focus:border-neutral outline-0 transition-all"
-        :class="{ 'border border-error-dark': state }"
+        class="form-input"
+        :class="{ 'form-input-invalid': state }"
         :placeholder="placeholder"
         @input="$emit('update:modelValue', $event.target.value)"
     />

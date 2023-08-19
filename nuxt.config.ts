@@ -1,7 +1,22 @@
+import {fileURLToPath} from "url";
+
 export default defineNuxtConfig({
+    imports: {
+        dirs: ['stores/main'],
+    },
     css: [
-        '@fortawesome/fontawesome-svg-core/styles.css'
+        '@fortawesome/fontawesome-svg-core/styles.css',
+        '@/assets/_base.scss',
+        '@/assets/_forms.scss'
     ],
+    head: {
+        link: [
+            {
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'
+            }
+        ],
+    },
     devtools: {
         enabled: true,
 
@@ -13,6 +28,25 @@ export default defineNuxtConfig({
     plugins: [
         '@/plugins/fontawesome.js'
     ],
+    components: [
+        {
+            path: '@/components',
+            pathPrefix: false
+        }
+    ],
+    runtimeConfig: {
+        public: {
+            backendUrl: process.env.APP_URL,
+            frontendUrl: process.env.FRONTEND_URL,
+            appName: process.env.APP_NAME
+        }
+    },
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
+    },
     modules: [
         [
             '@nuxtjs/eslint-module',
@@ -20,9 +54,29 @@ export default defineNuxtConfig({
                 'lintOnStart': false
             }
         ],
-        '@nuxt-alt/auth',
+        [
+            '@nuxt-alt/auth',
+            {
+                redirect: {
+                    home: '/',
+                    login: '/auth/login',
+                    logout: '/'
+                },
+                strategies: {
+                    laravelSanctum: {
+                        provider: 'laravel/sanctum',
+                        url: process.env.APP_URL
+                    },
+                }
+            }
+        ],
         '@pinia/nuxt',
-        '@nuxtjs/tailwindcss',
+        [
+            '@nuxtjs/tailwindcss',
+            {
+                configPath: '@@/tailwind.config.js'
+            }
+        ],
         [
             '@nuxtjs/i18n',
             {
@@ -45,7 +99,13 @@ export default defineNuxtConfig({
                 ]
             }
         ],
-        'nuxt-lodash',
+        [
+            'nuxt-lodash',
+            {
+                prefix: '_',
+                upperAfterPrefix: false
+            }
+        ],
         [
             '@vee-validate/nuxt',
             {
@@ -59,33 +119,4 @@ export default defineNuxtConfig({
             }
         ]
     ],
-    auth: {
-        redirect: {
-            home: '/',
-            login: '/auth/login',
-            logout: '/'
-        },
-        strategies: {
-            laravelSanctum: {
-                provider: 'laravel/sanctum',
-                url: process.env.APP_URL
-            },
-        }
-    },
-    components: [
-        {
-            path: '@/components',
-            pathPrefix: false
-        }
-    ],
-    lodash: {
-        prefix: '_',
-        upperAfterPrefix: false
-    },
-    runtimeConfig: {
-        public: {
-            backendUrl: process.env.APP_URL,
-            frontendUrl: process.env.FRONTEND_URL,
-        }
-    }
 })

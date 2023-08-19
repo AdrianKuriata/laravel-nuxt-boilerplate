@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .form-input {
+        @apply border shadow-md rounded w-full p-2 focus:border-neutral-dark hover:border-neutral-dark outline-0 transition-all text-xs;
+
+        &-invalid {
+            @apply border border-error-dark focus:border-error-dark;
+
+            &-feedback {
+                @apply text-red-700 mt-1 text-xs;
+            }
+        }
+
+        &-label {
+            @apply mb-1.5 block text-xs;
+        }
+    }
+}

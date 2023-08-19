@@ -1,15 +1,16 @@
 <template>
-    <div>
+    <div class="flex justify-start items-start">
         <input
             :checked="modelValue"
             :value="true"
             :id="randomId"
             type="checkbox"
-            :class="{ 'border border-error-dark': state }"
+            :class="{ 'form-input-invalid': state }"
+            class="mt-[0.08rem]"
             :placeholder="placeholder"
             @input="$emit('update:modelValue', $event.target.checked)"
         />
-        <label v-if="label" :for="randomId" v-text="label" class="ml-2"></label>
+        <label v-if="label" :for="randomId" v-text="label" class="text-xs ml-2"></label>
     </div>
 </template>
 <script setup>

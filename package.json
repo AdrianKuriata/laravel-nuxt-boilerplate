@@ -37,6 +37,7 @@
         "@nuxt-alt/http": "^1.6.5",
         "@pinia/nuxt": "^0.4.11",
         "@vee-validate/nuxt": "^4.11.1",
+        "mitt": "^3.0.1",
         "pinia": "^2.1.6",
         "sass": "^1.65.1",
         "ziggy-js": "^1.6.1"

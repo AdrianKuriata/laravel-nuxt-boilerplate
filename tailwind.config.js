@@ -2,26 +2,33 @@
 import colors from 'tailwindcss/colors'
 module.exports = {
     content: [
-        './client/*.{js,vue,ts}',
-        './nuxt.config.{js,ts}'
+        './client/components/**/*.{js,vue,ts}',
+        './client/layouts/**/*.vue',
+        './client/pages/**/*.vue',
+        './client/plugins/**/*.{js,ts}',
+        './nuxt.config.{js,ts}',
+        './client/app.vue',
     ],
     theme: {
+        fontFamily: {
+            sans: ['Montserrat', 'sans-serif']
+        },
         extend: {
             colors: {
                 primary: {
-                    light: colors.indigo["500"],
-                    DEFAULT: colors.indigo["600"],
-                    dark: colors.indigo["700"]
+                    light: colors.blue["500"],
+                    DEFAULT: colors.blue["600"],
+                    dark: colors.blue["700"]
                 },
                 secondary: {
-                    light: colors.fuchsia["500"],
-                    DEFAULT: colors.fuchsia["600"],
-                    dark: colors.fuchsia["700"]
+                    light: colors.zinc["500"],
+                    DEFAULT: colors.zinc["600"],
+                    dark: colors.zinc["700"]
                 },
                 neutral: {
-                    light: colors.cyan["500"],
-                    DEFAULT: colors.cyan["600"],
-                    dark: colors.cyan["700"]
+                    light: colors.slate["50"],
+                    DEFAULT: colors.slate["100"],
+                    dark: colors.slate["300"]
                 },
                 success: {
                     light: colors.green["500"],
@@ -34,9 +41,9 @@ module.exports = {
                     dark: colors.red["700"]
                 },
                 warning: {
-                    light: colors.amber["500"],
-                    DEFAULT: colors.amber["600"],
-                    dark: colors.amber["700"]
+                    light: colors.yellow["300"],
+                    DEFAULT: colors.yellow["400"],
+                    dark: colors.yellow["50"]
                 },
             }
         },

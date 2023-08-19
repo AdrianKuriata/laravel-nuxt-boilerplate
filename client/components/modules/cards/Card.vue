@@ -1,6 +1,6 @@
 <template>
-    <div class="border border-neutral rounded shadow-md bg-white" :class="{ [getSize]: true, 'mx-auto': centered }">
-        <div v-if="header" class="border-b border-neutral p-3 uppercase text-2xl rounded-t">
+    <div class="border border-neutral-dark rounded shadow-md bg-white" :class="{ [getSize]: true, 'mx-auto': centered }">
+        <div v-if="header" class="border-b border-neutral-dark p-2 uppercase text-xl rounded-t">
             <slot name="header">{{title}}</slot>
         </div>
 
@@ -8,7 +8,7 @@
             <slot />
         </div>
 
-        <div v-if="footer" class="border-t border-neutral p-3">
+        <div v-if="footer" class="border-t border-neutral-dark p-2">
             <slot name="footer" />
         </div>
     </div>
@@ -44,14 +44,16 @@ const getSize = computed(() => {
     switch (props.size) {
         case 'fluid':
             return 'w-full'
+        case 'xs':
+            return 'w-2/12'
         case 'sm':
-            return 'w-1/4'
+            return 'w-4/12'
         case 'md':
-            return 'w-2/4'
+            return 'w-6/12'
         case 'lg':
-            return 'w-3/4'
+            return 'w-8/4'
         case 'xl':
-            return 'w-5/6'
+            return 'w-10/12'
     }
 })
 </script>

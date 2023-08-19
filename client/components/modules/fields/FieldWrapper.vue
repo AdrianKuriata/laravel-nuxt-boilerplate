@@ -1,11 +1,13 @@
 <template>
     <v-field as="div" :name="name" class="mb-3" v-slot="{ errorMessage, meta }">
-        <label class="mb-1.5 block">{{label}}</label>
-        <slot :invalid="!meta.valid"/>
-        <div v-if="errorMessage" class="text-red-700 mt-1" v-text="errorMessage"></div>
+        <label :for="idForField" class="form-input-label">{{label}}</label>
+        <slot :id="idForField" :invalid="!meta.valid"/>
+        <div v-if="errorMessage" class="form-input-invalid-feedback" v-text="errorMessage"></div>
     </v-field>
 </template>
 <script setup>
+import strRandom from '@/utils/helpers'
+
 defineProps({
     name: {
         type: String,
@@ -17,4 +19,6 @@ defineProps({
         default: () => null
     }
 })
+
+const idForField = strRandom()
 </script>
