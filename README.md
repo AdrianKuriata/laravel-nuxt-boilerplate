@@ -19,7 +19,7 @@ The documentation for the "Laravel Nuxt Boilerplate" application allows you to q
 11. [Auth](#auth)
 12. [License](#license)
 
-## 1. System Requirements
+## System Requirements
 
 To run the "Laravel Nuxt Boilerplate" application, you will need:
 
@@ -29,7 +29,7 @@ To run the "Laravel Nuxt Boilerplate" application, you will need:
 - [Docker](https://www.docker.com) (for using Laravel Sail)
 - [Laravel Sail](https://laravel.com/docs/8.x/sail) (for easily running the Laravel application)
 
-## 2. Installation
+## Installation
 
 To install the application, follow these steps:
 
@@ -56,11 +56,11 @@ npm i
 npm run dev
 ```
 
-## 3. Configuration
+## Configuration
 
 Application configuration is located in the `.env` file. Customize settings such as the database, environment, etc., according to your needs.
 
-## 4. Running the Application
+## Running the Application
 
 To run the application, use the following command:
 
@@ -75,11 +75,11 @@ npm run dev
 
 The application will be accessible at `http://localhost:3000`.
 
-## 5. Using the Application
+## Using the Application
 
 With this boilerplate you can ease create new modern applications. There is latest version of Nuxt 3, Laravel 10. To store is used pinia.
 
-## 6. Usage Examples
+## Usage Examples
 
 ```javascript
 // Example JavaScript code
@@ -87,26 +87,26 @@ const example = 'Hello, world!';
 console.log(example);
 ```
 
-## 7. API Documentation
+## API Documentation
 
 There is Laravel for API. You can easy use a ziggy route with useZiggy (auto import) to use routes from the API in the client layer.
 
-## 8. Validation Handling
+## Validation Handling
 
 Form validation is handled on the backend (in Laravel). Detailed information about validation can be found in the [Laravel documentation](https://laravel.com/docs/8.x/validation). For the client vee-validate is used.
 
-## 9. Style Management
+## Style Management
 
 The application uses Tailwind CSS for style management. You can customize styles in the Tailwind CSS configuration files. There is a simple components created with tailwind, but if you want, you can use other UI libraries for your project.
 
-## 10. ESLint
+## ESLint
 
 ESLint is used to enforce coding style for JavaScript. Check a configuration for more information
 
-## 11. Auth
+## Auth
 
 There is used Laravel Breeze for backend authentication and @nuxt-alt/auth for client authorization. In fact to this day, there is no update for @nuxt/auth for Nuxt 3, so we are using alternative package. If there will be update for original package, we update this boilerplate.
 
-## 12. License
+## License
 
 The application is released under the MIT License.
