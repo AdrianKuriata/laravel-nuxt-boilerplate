@@ -44,6 +44,10 @@ cp .env.example .env
 # Install PHP dependencies
 composer install
 
+# Install Sail
+
+./vendor/bin/sail install
+
 # Start Docker containers (using Laravel Sail)
 ./vendor/bin/sail up -d
 
