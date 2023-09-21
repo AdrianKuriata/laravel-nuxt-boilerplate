@@ -15,6 +15,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+docker-compose.yml
 
 # Nuxt dev/build outputs
 .output
