@@ -1,5 +1,3 @@
-Certainly! Here's the documentation for the "Laravel Nuxt Boilerplate" application in English:
-
 # Laravel Nuxt Boilerplate Documentation
 
 The documentation for the "Laravel Nuxt Boilerplate" application allows you to quickly start a new project using Nuxt 3 as the frontend layer and Laravel as the backend layer.
