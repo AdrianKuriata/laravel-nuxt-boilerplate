@@ -9,14 +9,13 @@ The documentation for the "Laravel Nuxt Boilerplate" application allows you to q
 3. [Configuration](#configuration)
 4. [Running the Application](#running-the-application)
 5. [Using the Application](#using-the-application)
-6. [Usage Examples](#usage-examples)
-7. [API Documentation](#api-documentation)
-8. [Validation Handling](#validation-handling)
-9. [Style Management](#style-management)
-10. [ESLint and Vee-Validate](#eslint-and-vee-validate)
-11. [Auth](#auth)
-12. [Locales](#locales)
-13. [License](#license)
+6. [API Documentation](#api-documentation)
+7. [Validation Handling](#validation-handling)
+8. [Style Management](#style-management)
+9. [ESLint and Vee-Validate](#eslint-and-vee-validate)
+10. [Auth](#auth)
+11. [Locales](#locales)
+12. [License](#license)
 
 ## System Requirements
 
@@ -77,14 +76,6 @@ The application will be accessible at `http://localhost:3000`.
 ## Using the Application
 
 With this boilerplate you can ease create new modern applications. There is latest version of Nuxt 3, Laravel 10. To manage store pinia is used.
-
-## Usage Examples
-
-```javascript
-// Example JavaScript code
-const example = 'Hello, world!';
-console.log(example);
-```
 
 ## API Documentation
 
