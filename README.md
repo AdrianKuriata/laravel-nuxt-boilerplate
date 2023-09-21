@@ -41,12 +41,17 @@ cd laravel-nuxt-boilerplate
 # Copy the .env.example file to .env and customize the configuration
 cp .env.example .env
 
-# Install PHP dependencies
-composer install
-
 # Install Sail
 
 ./vendor/bin/sail install
+
+# Composer
+
+./vendor/bin/sail composer install
+
+# Migrations
+
+./vendor/bin/sail art migrate:install && ./vendor/bin/sail art migrate
 
 # Start Docker containers (using Laravel Sail)
 ./vendor/bin/sail up -d
