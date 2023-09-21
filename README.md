@@ -104,7 +104,7 @@ ESLint is used to enforce coding style for JavaScript. Check a configuration for
 
 ## Auth
 
-There is used Laravel Breeze for backend authentication and @nuxt-alt/auth for client authorization. In fact to this day, there is no update for @nuxt/auth for Nuxt 3, so we are using alternative package. If there will be update for original package, we update this boilerplate.
+There is used Laravel Breeze for backend authentication and @nuxt-alt/auth for client authorization. In fact to this day, there is no update for @nuxt/auth for Nuxt 3, so we are using alternative package. If there will be update for original package, we update this boilerplate. You can login, register or reset password.
 
 ## Locales
 
