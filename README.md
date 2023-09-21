@@ -15,7 +15,8 @@ The documentation for the "Laravel Nuxt Boilerplate" application allows you to q
 9. [Style Management](#style-management)
 10. [ESLint and Vee-Validate](#eslint-and-vee-validate)
 11. [Auth](#auth)
-12. [License](#license)
+12. [Locales](#locales)
+13. [License](#license)
 
 ## System Requirements
 
@@ -75,7 +76,7 @@ The application will be accessible at `http://localhost:3000`.
 
 ## Using the Application
 
-With this boilerplate you can ease create new modern applications. There is latest version of Nuxt 3, Laravel 10. To store is used pinia.
+With this boilerplate you can ease create new modern applications. There is latest version of Nuxt 3, Laravel 10. To manage store pinia is used.
 
 ## Usage Examples
 
@@ -104,6 +105,10 @@ ESLint is used to enforce coding style for JavaScript. Check a configuration for
 ## Auth
 
 There is used Laravel Breeze for backend authentication and @nuxt-alt/auth for client authorization. In fact to this day, there is no update for @nuxt/auth for Nuxt 3, so we are using alternative package. If there will be update for original package, we update this boilerplate.
+
+## Locales
+
+i18n is used for manage locales in the application. Every locale should be updated in the client/locales files. The next locales you can add nuxt.config.ts.
 
 ## License
 
