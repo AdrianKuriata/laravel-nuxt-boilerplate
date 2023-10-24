@@ -5,9 +5,7 @@ export default defineNuxtConfig({
         dirs: ['stores/main'],
     },
     css: [
-        '@fortawesome/fontawesome-svg-core/styles.css',
-        '@/assets/_base.scss',
-        '@/assets/_forms.scss'
+        '@fortawesome/fontawesome-svg-core/styles.css'
     ],
     head: {
         link: [
@@ -71,12 +69,7 @@ export default defineNuxtConfig({
             }
         ],
         '@pinia/nuxt',
-        [
-            '@nuxtjs/tailwindcss',
-            {
-                configPath: '@@/tailwind.config.js'
-            }
-        ],
+        '@nuxt/ui',
         [
             '@nuxtjs/i18n',
             {

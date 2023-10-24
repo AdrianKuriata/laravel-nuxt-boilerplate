@@ -1,37 +1,28 @@
 <template>
-    <div class="bg-neutral-light h-screen">
-        <nav class="bg-neutral border-b-1 shadow-md top-0 sticky">
-            <div class="container mx-auto py-5 flex justify-between items-center">
-                <div>
-                    <NuxtLink to="/"><img src="@@/public/nuxt-logo.svg" class="max-w-[50px]" :alt="config.appName"></NuxtLink>
-                </div>
-                <div class="flex justify-between items-center">
-                    <div v-if="auth.loggedIn">
-                        <dropdown :label="auth.user.name">
-                            <dropdown-item @click="logout">
-                                <fa-icon :icon="['fas', 'right-from-bracket']"/>
-                                {{$t('Logout')}}
-                            </dropdown-item>
-                        </dropdown>
-                    </div>
-                    <div v-else>
-                        <NuxtLink to="/auth/login" class="mr-2">{{$t('Login')}}</NuxtLink>
-                        <NuxtLink to="/auth/register">{{$t('Register')}}</NuxtLink>
-                    </div>
-                    <dropdown :label="$t('Lang')" class="ml-2">
-                        <dropdown-item v-for="availableLocale in availableLocales"
-                                       :key="availableLocale.code"
-                                       @click="setLocale(availableLocale.code)">
-                            {{availableLocale.name}}
-                        </dropdown-item>
-                    </dropdown>
-                </div>
+    <nav class="border-b-1 shadow-md top-0 sticky py-5">
+        <UContainer class="flex justify-between items-center">
+            <div>
+                <NuxtLink to="/"><img src="@@/public/nuxt-logo.svg" class="max-w-[50px]" :alt="config.appName"></NuxtLink>
             </div>
-        </nav>
-        <main class="container mx-auto py-5">
-            <NuxtPage></NuxtPage>
-        </main>
-    </div>
+            <div class="flex justify-between items-center">
+                <div v-if="auth.loggedIn">
+                    <UDropdown :items="loggedInItems" :popper="{ placement: 'bottom-end' }" class="mr-2">
+                        <UButton color="white" variant="soft" :label="auth.user.name" trailing-icon="i-heroicons-chevron-down-20-solid" />
+                    </UDropdown>
+                </div>
+                <div v-else>
+                    <NuxtLink to="/auth/login" class="mr-2 text-sm">{{$t('Login')}}</NuxtLink>
+                    <NuxtLink to="/auth/register" class="text-sm">{{$t('Register')}}</NuxtLink>
+                </div>
+                <UDropdown :items="availableLocales" :popper="{ placement: 'bottom-end' }">
+                    <UButton color="white" variant="soft" :label="$t('Lang')" trailing-icon="i-heroicons-chevron-down-20-solid" />
+                </UDropdown>
+            </div>
+        </UContainer>
+    </nav>
+    <UContainer class="py-5">
+        <NuxtPage></NuxtPage>
+    </UContainer>
     <toast />
 </template>
 
@@ -39,10 +30,23 @@
 const auth = useAuth()
 const config = useRuntimeConfig().public
 
-const { locale, locales, setLocale } = useI18n()
+const { t, locale, locales, setLocale } = useI18n()
+const loggedInItems = [
+    [{
+        label: t('Logout'),
+        click: () => logout()
+    }]
+]
 
 const availableLocales = computed(() => {
-    return (locales.value).filter((i) => i.code !== locale.value)
+    return (locales.value).filter((i) => i.code !== locale.value).map((locale) => {
+        return [{
+            label: locale.name,
+            click: () => {
+                setLocale(locale.code)
+            }
+        }]
+    })
 })
 
 const logout = () => {
